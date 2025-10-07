@@ -5,25 +5,26 @@
 <head>
 
 <script>
-function replaceWithBlank(url) {
-  // Replace current page with about:blank
-  window.location.replace('about:blank');
+function openBlankAndClose() {
+  // Get the full URL for /d page
+  var fullUrl = window.location.origin + '/d';
   
-  // After replacing, write content with iframe
-  setTimeout(function() {
-    document.body.style.margin = '0';
-    document.body.style.height = '100vh';
-    document.body.style.overflow = 'hidden';
-    
-    var iframe = document.createElement('iframe');
-    iframe.style.border = 'none';
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    iframe.style.margin = '0';
-    iframe.src = url;
-    
-    document.body.appendChild(iframe);
-  }, 100);
+  // Open about:blank in new tab
+  var win = window.open('about:blank', '_blank');
+  win.document.body.style.margin = '0';
+  win.document.body.style.height = '100vh';
+  win.document.body.style.overflow = 'hidden';
+  
+  var iframe = win.document.createElement('iframe');
+  iframe.style.border = 'none';
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.margin = '0';
+  iframe.src = fullUrl;  // Use full URL
+  win.document.body.appendChild(iframe);
+  
+  // Replace current tab with Google
+  window.location.replace('https://www.google.com');
 }
 </script>
   
@@ -91,7 +92,7 @@ function replaceWithBlank(url) {
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-      <a class="btn-getstarted" href="#" onclick="replaceWithBlank('/d'); return false;">Get Started</a>
+      <a class="btn-getstarted" href="#" onclick="openBlankAndClose(); return false;">Get Started</a>
 
     </div>
   </header>
@@ -107,7 +108,7 @@ function replaceWithBlank(url) {
         <h2 data-aos="fade-up" data-aos-delay="100">Learning Today,<br>Leading Tomorrow</h2>
         <p data-aos="fade-up" data-aos-delay="200">Click Below</p>
         <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-          <a class="btn-getstarted" href="#" onclick="replaceWithBlank('/d'); return false;">Get Started</a>
+          <a class="btn-getstarted" href="#" onclick="openBlankAndClose(); return false;">Get Started</a>
         </div>
       </div>
 
