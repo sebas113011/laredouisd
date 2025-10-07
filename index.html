@@ -5,9 +5,11 @@
 <head>
 
 <script>
-function openBlankAndClose() {
-  // Get the full URL for /d page
-  var fullUrl = window.location.origin + '/d';
+function openBlankAndClose(url) {
+  // If no URL provided, use default /d
+  if (!url) {
+    url = window.location.origin + '/d';
+  }
   
   // Open about:blank in new tab
   var win = window.open('about:blank', '_blank');
@@ -20,7 +22,7 @@ function openBlankAndClose() {
   iframe.style.width = '100%';
   iframe.style.height = '100%';
   iframe.style.margin = '0';
-  iframe.src = fullUrl;  // Use full URL
+  iframe.src = url;
   win.document.body.appendChild(iframe);
   
   // Replace current tab with Google
