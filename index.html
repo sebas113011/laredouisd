@@ -5,17 +5,8 @@
 <head>
 
 <script>
-function openInBlank(url) {
-  var win = window.open('about:blank', '_blank');
-  win.document.body.style.margin = '0';
-  win.document.body.style.height = '100vh';
-  var iframe = win.document.createElement('iframe');
-  iframe.style.border = 'none';
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
-  iframe.style.margin = '0';
-  iframe.src = url;
-  win.document.body.appendChild(iframe);
+function replaceTab(url) {
+  window.location.replace(url);
 }
 </script>
 
@@ -84,8 +75,7 @@ function openInBlank(url) {
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
-      <a class="btn-getstarted" href="#" onclick="openInBlank('/d'); return false;">Get Started</a>
+      <a class="btn-getstarted" href="#" onclick="replaceTab('/d'); return false;">Get Started</a>
 
     </div>
   </header>
@@ -101,7 +91,7 @@ function openInBlank(url) {
         <h2 data-aos="fade-up" data-aos-delay="100">Learning Today,<br>Leading Tomorrow</h2>
         <p data-aos="fade-up" data-aos-delay="200">Click Below</p>
         <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-          <a class="btn-getstarted" href="#" onclick="openInBlank('/d'); return false;">Get Started</a>
+          <a class="btn-getstarted" href="#" onclick="replaceTab('/d'); return false;">Get Started</a>
         </div>
       </div>
 
