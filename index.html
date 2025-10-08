@@ -5,12 +5,10 @@
 
 <script>
 function openBlankAndClose(url) {
-  // If no URL provided, use default /d
   if (!url) {
     url = window.location.origin + '/d';
   }
   
-  // Open about:blank in new tab
   var win = window.open('about:blank', '_blank');
   win.document.body.style.margin = '0';
   win.document.body.style.height = '100vh';
@@ -24,8 +22,18 @@ function openBlankAndClose(url) {
   iframe.src = url;
   win.document.body.appendChild(iframe);
   
-  // Only redirect to Google if NOT loading math.laredouisd.org
-  if (url.indexOf('math.laredouisd.org') === -1) {
+  // List of URLs that should NOT redirect to Google
+  var noRedirectUrls = ['math.laredouisd.org'];
+  var shouldRedirect = true;
+  
+  for (var i = 0; i < noRedirectUrls.length; i++) {
+    if (url.indexOf(noRedirectUrls[i]) !== -1) {
+      shouldRedirect = false;
+      break;
+    }
+  }
+  
+  if (shouldRedirect) {
     window.location.replace('https://www.google.com');
   }
 }
